@@ -22,7 +22,7 @@ fi
 # Installation de Brew
 if [[ ! -f $BREW_PATH ]]; then
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-  grep -q 'brew shellenv' "$HOME/.zprofile" || echo "eval \"\$($BREW_PATH shellenv)\"" >> "$HOME/.zprofile"
+  grep -q 'brew shellenv' "$HOME/.zprofile" || echo "eval \"\$($BREW_PATH shellenv)\"" >>"$HOME/.zprofile"
   eval "$($BREW_PATH shellenv)"
 else
   echo "Brew est déjà installé"
