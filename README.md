@@ -1,11 +1,11 @@
-# brewinstall.sh
+# brewinstall
 
 Ce script a pour objectif d'installer [brew](https://brew.sh/) ainsi que des applications cli et MacOS présentes dans des fichiers dédiés.
 
 Le script va également effectuer les opérations suivantes :
 
-- désactiver la création des fichiers `.DS_Store` sur les partages réseau.
-- activer la commande `locate`
+- Désactiver la création des fichiers `.DS_Store` sur les partages réseau.
+- Activer la commande `locate`
 
 ## Préparation
 
@@ -19,8 +19,11 @@ Les lignes commençant par `#` sont ignorées.
 
 ## Utilisation
 
+
 1. Clonez ou téléchargez ce répertoire
+
 2. Éditez `brewinstall.apps.cfg` et `brewinstall.cask.cfg` selon vos besoins
+
 3. Exécutez le script :
 
 ```bash
