@@ -29,7 +29,7 @@ else
 fi
 
 # Installation des applications cli
-brew install $(grep -v '#' "$dir/brewinstall.apps.config")
+brew install $(grep -v '#' "$dir/brewinstall.apps.cfg")
 
 # Installation des applications MacOS
-brew install --cask $(grep -v '#' "$dir/brewinstall.cask.config")
+brew install --cask $(grep -v '#' "$dir/brewinstall.cask.cfg")
