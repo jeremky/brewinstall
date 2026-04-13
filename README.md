@@ -19,7 +19,6 @@ Les lignes commençant par `#` sont ignorées.
 
 ## Utilisation
 
-
 1. Clonez ou téléchargez ce répertoire
 
 2. Éditez `brewinstall.apps.cfg` et `brewinstall.cask.cfg` selon vos besoins
