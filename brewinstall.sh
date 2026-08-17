@@ -1,6 +1,6 @@
 #!/bin/zsh -e
 
-dir=$(dirname "$0")
+dir=${0:a:h}
 
 # Désactivation des .DS_Store sur le réseau
 if [[ $(defaults read /Library/Preferences/com.apple.desktopservices DSDontWriteNetworkStores) = 0 ]]; then
@@ -15,14 +15,21 @@ else
 fi
 
 # Installation de Brew
-if [[ ! -f $BREW_PATH ]]; then
+if ! command -v "$BREW_PATH" >/dev/null 2>&1; then
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-  grep -q 'brew shellenv' "$HOME/.zprofile" || echo "eval \"\$($BREW_PATH shellenv)\"" >>"$HOME/.zprofile"
+  grep -qF 'brew shellenv' "$HOME/.zprofile" || echo "eval \"\$($BREW_PATH shellenv)\"" >> "$HOME/.zprofile"
   eval "$($BREW_PATH shellenv)"
 fi
 
-# Installation des applications cli
-brew install $(grep -v '#' "$dir/brewinstall.apps.cfg")
+# Installe les apps CLI
+if [[ -f "$SCRIPT_DIR/brewinstall.apps.cfg" ]]; then
+  brew install $(grep -v -E '^\s*#|^\s*$' "$SCRIPT_DIR/brewinstall.apps.cfg")
+fi
 
-# Installation des applications MacOS
-brew install --cask $(grep -v '#' "$dir/brewinstall.cask.cfg")
+# Installe les apps macOS (cask)
+if [[ -f "$SCRIPT_DIR/brewinstall.cask.cfg" ]]; then
+  brew install --cask $(grep -v -E '^\s*#|^\s*$' "$SCRIPT_DIR/brewinstall.cask.cfg")
+fi
+
+# Mise à jour et nettoyage
+brew update && brew cleanup
