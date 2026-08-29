@@ -1,6 +1,7 @@
-#!/bin/zsh
+#!/bin/bash
+# shellcheck disable=SC2046 # split volontaire : liste de paquets à installer en plusieurs arguments
 
-dir=${0:a:h}
+dir=$(dirname "$(realpath "$0")")
 
 # Vérifie que le script est exécuté sur macOS
 if [[ $(uname -s) != "Darwin" ]]; then
