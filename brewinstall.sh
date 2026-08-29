@@ -4,7 +4,7 @@ dir=${0:a:h}
 
 # Vérifie que le script est exécuté sur macOS
 if [[ $(uname -s) != "Darwin" ]]; then
-  echo "Ce script est destiné à macOS uniquement." >&2
+  echo "Ce script est destiné à macOS uniquement" >&2
   exit 1
 fi
 
@@ -23,7 +23,7 @@ fi
 # Installation de Brew
 if ! command -v "$BREW_PATH" >/dev/null 2>&1; then
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-  grep -qF 'brew shellenv' "$HOME/.zprofile" || echo "eval \"\$($BREW_PATH shellenv)\"" >> "$HOME/.zprofile"
+  grep -qF 'brew shellenv' "$HOME/.zprofile" || echo "eval \"\$($BREW_PATH shellenv)\"" >>"$HOME/.zprofile"
   eval "$($BREW_PATH shellenv)"
 fi
 
